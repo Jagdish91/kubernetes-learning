@@ -13,3 +13,5 @@ This project demonstrates running a first Kubernetes Pod using **minikube** and 
 ### 1. Verify system architecture
 ```bash
 uname -m
+
+## Install minikube (official binary)
