@@ -1,0 +1,28 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: nginx-deployment
+  labels:
+    app: first-nginx
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: first-nginx
+  template:
+    metadata:
+      labels:
+        app: first-nginx
+    spec:
+      containers:
+      - name: nginx
+        image: nginx:1.14.2
+        volumeMounts:
+          - name: db-connection
+            mountPath: /home
+        ports:
+        - containerPort: 80
+      volumes:
+        - name: db-connection
+          configMap:
+            name: nginx-configmap-demo
